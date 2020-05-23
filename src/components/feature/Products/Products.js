@@ -1,18 +1,13 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { loadProducts } from "../../../store/products/actions";
+import React from "react";
+import { useDataLoader } from "./useDataLoader";
 import Product from "./Product";
 
 function Products() {
-  const dispatch = useDispatch();
-  const products = useSelector(state => state.products.list);
-  useEffect(() => {
-    dispatch(loadProducts());
-  }, []);
+  const products = useDataLoader()
   return (
     <div className="products">
       {products.map(product => (
-        <Product product={product} />
+        <Product product={product} key={`product-key-${product.id}`} />
       ))}
     </div>
   );
