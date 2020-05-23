@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { loadProducts } from "./store/products/actions";
+import { loadProducts } from "../../../store/products/actions";
 import Product from "./Product";
 
 function Products() {
