@@ -1,4 +1,5 @@
 export const LOAD_PRODUCTS = "LOAD_PRODUCTS";
+export const RATE_PRODUCT = 'RATE_PRODUCT';
 
 export const loadProducts = () => ({
   type: LOAD_PRODUCTS,
@@ -24,4 +25,10 @@ export const loadProducts = () => ({
       description: "Some New Balance trainers you might like to buy"
     }
   ]
+});
+
+export const rateProduct = (id, rating) => ({
+  type: RATE_PRODUCT,
+  id,
+  rating
 });
