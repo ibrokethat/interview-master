@@ -10,7 +10,9 @@
 ## Notes
 
 I didn't do the styling. Being honest, I couldn't be bothered as the sun was shining and I wanted to be out in it.
+
 I didn't use TypeScript. I'm learning it, but decided I'd be better showing my approach generally as oppose to proving it.
+
 I didn't run linting or integrate prettier - I would in production code.
 
 
