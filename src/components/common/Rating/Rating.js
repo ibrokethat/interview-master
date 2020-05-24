@@ -1,5 +1,5 @@
 import React from "react";
-import { useRating } from './useRating';
+import { useRating } from './use-rating';
 
 function Rating({ rating = 3, maxRating = 5, id, action }) {
   const { onClick, onMouseOver, onMouseOut } = useRating(id, rating, action);
