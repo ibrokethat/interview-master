@@ -14,6 +14,10 @@ export const products = (
       const {list} = state;
       const index = list.findIndex((item) => item.id === action.id);
 
+      if (index < 0) {
+        return state;
+      }
+
       return {
         list: [
           ...list.slice(0, index),
