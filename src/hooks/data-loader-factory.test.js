@@ -13,11 +13,11 @@ describe('hooks/data-loader-factory', () => {
         selector = jest.fn().mockReturnValue(null);
         useDataLoader = dataLoaderFactory(action, selector);
 
-        ({result} = renderHook(() => useDataLoader(1, 2)));
+        ({result} = renderHook(() => useDataLoader({ id: 10 })));
       });
 
       test('action is called', () => {
-          expect(action).toHaveBeenCalledWith(1, 2);
+          expect(action).toHaveBeenCalledWith({ id: 10 });
       });
 
       test('selector is called', () => {
