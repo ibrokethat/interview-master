@@ -13,7 +13,7 @@ I didn't do the styling. Being honest, I couldn't be bothered as the sun was shi
 
 I didn't use TypeScript. I'm learning it, but decided I'd be better showing my approach generally as oppose to proving it.
 
-I didn't run linting or integrate prettier - I would in production code.
+I didn't run linting or integrate prettier and why-did-you-render - I would in production code.
 
 
 ## Approach
