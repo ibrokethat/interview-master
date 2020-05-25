@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useDispatch } from "react-redux";
 
-export function useRating(id, currentRating, action) {
-  const [rating, setState] = useState(currentRating);
+export function useRating(id, initialRating, action) {
+  const [rating, setState] = useState(initialRating);
+  const [currentRating, setCurrentState] = useState(initialRating);
   const dispatch = useDispatch();
 
   const onClick = (event) => {
@@ -15,17 +16,18 @@ export function useRating(id, currentRating, action) {
 
   const onMouseOver = (event) => {
     if (event && event.currentTarget) {
-      dispatch(action(id, event.currentTarget.dataset.rating));
+      setCurrentState(event.currentTarget.dataset.rating);
     }
   }
 
   const onMouseOut = (event) => {
     if (event && event.currentTarget) {
-      dispatch(action(id, rating));
+      setCurrentState(rating);
     }
   }
 
   return {
+    currentRating,
     onClick,
     onMouseOut,
     onMouseOver

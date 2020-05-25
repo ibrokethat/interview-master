@@ -22,10 +22,14 @@ describe('components/common/Rating/useRating', () => {
 
     test('intial setup returns api', () => {
         const {onClick, onMouseOver, onMouseOut} = result.current;
-
         expect(onClick).toBeInstanceOf(Function);
         expect(onMouseOver).toBeInstanceOf(Function);
         expect(onMouseOut).toBeInstanceOf(Function);
+    });
+
+    test("intial setup returns current rating", () => {
+      const { currentRating } = result.current;
+      expect(currentRating).toBe(3);
     });
 
     test('onClick dispatches new rating', () => {
@@ -40,29 +44,29 @@ describe('components/common/Rating/useRating', () => {
         act(() => result.current.onMouseOver({
             currentTarget: {dataset: {rating: 5}},
         }));
-        expect(action).toHaveBeenCalledWith(1, 5);
+        expect(setState).toHaveBeenCalledWith(5);
     });
 
     test('onMouseOut dispatches initial rating', () => {
         act(() => result.current.onMouseOut({
             currentTarget: {dataset: {rating: 5}},
         }));
-        expect(action).toHaveBeenCalledWith(1, 3);
+        expect(setState).toHaveBeenCalledWith(3);
     });
 
-    test('onClick does nothing if caled with no event or event currentTarget', () => {
+    test('onClick does nothing if called with no event or event currentTarget', () => {
         act(() => result.current.onClick({}));
         expect(setState).not.toHaveBeenCalled();
         expect(action).not.toHaveBeenCalled();
     });
 
-    test('onMouseOver does nothing if caled with no event or event currentTarget', () => {
+    test('onMouseOver does nothing if called with no event or event currentTarget', () => {
       act(() => result.current.onMouseOver({}));
-      expect(action).not.toHaveBeenCalled();
+      expect(setState).not.toHaveBeenCalled();
     });
 
-    test('onMouseOut does nothing if caled with no event or event currentTarget', () => {
+    test('onMouseOut does nothing if called with no event or event currentTarget', () => {
       act(() => result.current.onMouseOut({}));
-      expect(action).not.toHaveBeenCalled();
+      expect(setState).not.toHaveBeenCalled();
     });
   });

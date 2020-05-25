@@ -22,4 +22,4 @@ Decoupled the redux based data loading from the Products component by use of cus
 
 Created a generic data loader factory.
 
-Moved the Rating into a common component. Allows it to be used in any parent component to rate any bound data point. I'd rethink the use of pushing state chages to the store on mouse over and mouse out if I were to refactor this.
+Moved the Rating into a common component. Allows it to be used in any parent component to rate any bound data point.

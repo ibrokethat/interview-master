@@ -5,27 +5,28 @@ import { useRating } from './use-rating';
 jest.mock('./use-rating');
 
 describe('components/common/Rating/Rating', () => {
+  const item = {
+    id: 1,
+    rating: 3,
+  };
+  const action = 1;
+  const onClick = jest.fn();
+  const onMouseOver = jest.fn();
+  const onMouseOut = jest.fn();
+
+  beforeEach(() => {
+    useRating.mockReturnValue({
+      onClick,
+      onMouseOver,
+      onMouseOut,
+    });
+  });
+
+  afterEach(() => {
+   jest.clearAllMocks();
+  });
+
   describe('interactivity', () => {
-    const item = {
-      id: 1,
-      rating: 3
-    };
-    const action = 1;
-    const onClick = jest.fn();
-    const onMouseOver = jest.fn();
-    const onMouseOut = jest.fn();
-
-    beforeEach(() => {
-      useRating.mockReturnValue({
-        onClick,
-        onMouseOver,
-        onMouseOut
-      });
-    });
-
-    afterEach(() => {
-      jest.clearAllMocks();
-    });
 
     test('calls the use rating hook', () => {
       renderComponent(<Rating {...item} action={action} />);
@@ -57,6 +58,12 @@ describe('components/common/Rating/Rating', () => {
     (Array.of(1, 2, 3, 4, 5)).forEach((rating) => {
       test(`renders a rating of (${rating})`, () => {
         const item = {id: 1, rating};
+        useRating.mockReturnValue({
+          currentRating: rating,
+          onClick,
+          onMouseOver,
+          onMouseOut,
+        });
         const action = 1;
         const { container } = renderComponent(<Rating {...item} action={action} />);
         expect(container.querySelectorAll('.rating-pip').length).toEqual(5);
